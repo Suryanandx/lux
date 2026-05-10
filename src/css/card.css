@@ -35,12 +35,4 @@
   .stat-card .stat-delta.up   { color: var(--success); }
   .stat-card .stat-delta.down { color: var(--danger); }
 
-  /* Empty state */
-  .empty {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: var(--s-16) var(--s-8); gap: var(--s-4);
-  }
-  .empty-icon { width: 48px; height: 48px; color: var(--text-subtle); }
-  .empty h3 { font-size: var(--text-lg); color: var(--text); }
-  .empty p  { font-size: var(--text-sm); color: var(--text-subtle); max-width: 360px; }
 }

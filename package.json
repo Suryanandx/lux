@@ -3,18 +3,36 @@
   "version": "0.2.0",
   "description": "Zero-weight UI kit for modern SaaS. 12KB total (CSS + JS gzipped). 40+ components, native dark mode, zero dependencies. Built to beat shadcn on size, not features.",
   "keywords": [
-    "ui", "ui-kit", "ui-library", "css", "saas", "component-library",
-    "design-system", "dark-mode", "web-components", "lightweight",
-    "zero-dependencies", "tailwind-alternative", "bootstrap-alternative",
-    "shadcn-alternative", "semantic-css", "vanilla", "no-framework"
+    "ui",
+    "ui-kit",
+    "ui-library",
+    "css",
+    "saas",
+    "component-library",
+    "design-system",
+    "dark-mode",
+    "web-components",
+    "lightweight",
+    "zero-dependencies",
+    "tailwind-alternative",
+    "bootstrap-alternative",
+    "shadcn-alternative",
+    "semantic-css",
+    "vanilla",
+    "no-framework"
   ],
   "author": "Suryanand <systems@valnoraelric.com> (https://suryanand.com)",
   "license": "MIT",
   "homepage": "https://lux.valthrax.com",
-  "repository": { "type": "git", "url": "https://github.com/Suryanandx/lux" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Suryanandx/lux"
+  },
   "main": "dist/lux.min.js",
   "style": "dist/lux.min.css",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "node build.js",
     "dev": "node build.js --watch",
@@ -22,6 +40,7 @@
     "test": "node test/runner.js"
   },
   "devDependencies": {
-    "esbuild": "^0.25.0"
+    "esbuild": "^0.25.0",
+    "lightningcss": "^1.32.0"
   }
 }

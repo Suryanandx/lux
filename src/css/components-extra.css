@@ -315,23 +315,6 @@
     75%, 100% { transform: scale(2.2); opacity: 0; }
   }
 
-  /* ── Quote / Testimonial ── */
-  .quote {
-    background: var(--bg-subtle); border: 1px solid var(--border);
-    border-radius: var(--r-xl); padding: var(--s-5); display: flex;
-    flex-direction: column; gap: var(--s-4);
-  }
-  .quote-body {
-    font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7;
-    font-style: italic; position: relative; padding-left: var(--s-4);
-    border-left: 2px solid var(--brand);
-  }
-  .quote-author {
-    display: flex; align-items: center; gap: var(--s-3);
-  }
-  .quote-name  { font-size: var(--text-sm); font-weight: 600; color: var(--text); }
-  .quote-role  { font-size: var(--text-xs); color: var(--text-subtle); }
-
   /* ── Feature card with icon ── */
   .feature-card {
     padding: var(--s-5); background: var(--bg-subtle);
@@ -382,9 +365,4 @@
     margin-bottom: var(--s-3);
   }
 
-  /* ── Resizable / split (CSS) ── */
-  .split {
-    display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);
-    resize: horizontal; overflow: auto; min-height: 200px;
-  }
 }

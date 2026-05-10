@@ -84,20 +84,6 @@
   }
   .fab:active { transform: scale(0.95); }
 
-  /* ── Toggle group (more compact than segmented) ─────────────── */
-  .toggle-group {
-    display: inline-flex; border: 1px solid var(--border); border-radius: var(--r);
-    overflow: hidden;
-  }
-  .toggle-group button {
-    border: none; background: var(--bg); color: var(--text-muted);
-    padding: 6px var(--s-3); font-size: var(--text-sm); cursor: pointer;
-    border-radius: 0;
-  }
-  .toggle-group button + button { border-left: 1px solid var(--border); }
-  .toggle-group button:hover { background: var(--bg-muted); color: var(--text); }
-  .toggle-group button[aria-pressed="true"] { background: var(--bg-muted); color: var(--text); }
-
   /* ── Combobox / search-select ────────────────────────────────── */
   .combobox {
     position: relative;
@@ -217,34 +203,6 @@
   }
   .feature-row strong { display: block; color: var(--text); margin-bottom: 4px; }
   .feature-row p { font-size: var(--text-sm); color: var(--text-muted); margin: 0; }
-
-  /* ── Tooltip improvements (with arrow) ──────────────────────── */
-  [data-tooltip] { position: relative; }
-  [data-tooltip]::before, [data-tooltip]::after {
-    pointer-events: none; opacity: 0;
-    transition: opacity var(--t), transform var(--t);
-  }
-  [data-tooltip]::before {
-    content: attr(data-tooltip);
-    position: absolute; bottom: calc(100% + 8px); left: 50%;
-    transform: translateX(-50%) translateY(4px);
-    background: light-dark(#18181b, #fafafa); color: light-dark(#fafafa, #18181b);
-    padding: 4px var(--s-2); border-radius: var(--r-sm);
-    font-size: var(--text-xs); font-weight: 500;
-    white-space: nowrap; z-index: var(--z-overlay);
-  }
-  [data-tooltip]::after {
-    content: ''; position: absolute; bottom: calc(100% + 3px); left: 50%;
-    transform: translateX(-50%) translateY(4px);
-    width: 0; height: 0;
-    border-left: 5px solid transparent; border-right: 5px solid transparent;
-    border-top: 5px solid light-dark(#18181b, #fafafa);
-    z-index: var(--z-overlay);
-  }
-  [data-tooltip]:hover::before, [data-tooltip]:hover::after,
-  [data-tooltip]:focus-visible::before, [data-tooltip]:focus-visible::after {
-    opacity: 1; transform: translateX(-50%) translateY(0);
-  }
 
   /* ── Card with hover-lift built-in ───────────────────────────── */
   .card[data-interactive="true"] {

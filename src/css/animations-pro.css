@@ -42,21 +42,6 @@
     0%, 100% { background-position: 0% 50%; }
     50%      { background-position: 100% 50%; }
   }
-  @keyframes lux-typing {
-    from { width: 0; }
-    to   { width: 100%; }
-  }
-  @keyframes lux-caret {
-    50% { border-right-color: transparent; }
-  }
-  @keyframes lux-orbit {
-    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
-  }
-  @keyframes lux-draw {
-    from { stroke-dashoffset: 100; }
-    to   { stroke-dashoffset: 0; }
-  }
   @keyframes lux-rise {
     from { opacity: 0; transform: translateY(40px) scale(0.95); }
     to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -91,16 +76,6 @@
 
   .hover-glow { transition: box-shadow var(--t); }
   .hover-glow:hover { box-shadow: 0 0 32px -4px color-mix(in srgb, var(--brand) 50%, transparent); }
-
-  .hover-tilt { transition: transform var(--t); transform-style: preserve-3d; }
-  .hover-tilt:hover { transform: perspective(800px) rotateY(-4deg) rotateX(2deg); }
-
-  .hover-shine {
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, transparent 20%, color-mix(in srgb, white 14%, transparent) 40%, transparent 60%) no-repeat -200% 0 / 200% 100%, var(--accent);
-    transition: background-position 0.8s var(--ease-smooth);
-  }
-  .hover-shine:hover { background-position: 200% 0, 0 0; }
 
   /* ── Stagger children ───────────────────────────────────────────── */
   .stagger > * { animation: lux-fade-up 0.6s var(--ease-spring) both; }
@@ -140,15 +115,6 @@
       linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 60%, #06b6d4)) border-box;
     border: 1px solid transparent;
   }
-  .border-gradient-rainbow {
-    background:
-      linear-gradient(var(--bg), var(--bg)) padding-box,
-      conic-gradient(from var(--angle, 0deg), #6366f1, #ec4899, #f59e0b, #22c55e, #06b6d4, #6366f1) border-box;
-    border: 2px solid transparent;
-  }
-  @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-  @keyframes lux-spin-angle { to { --angle: 360deg; } }
-  .border-gradient-rainbow.animate { animation: lux-spin-angle 4s linear infinite; }
 
   /* ── Glow ────────────────────────────────────────────────────────── */
   .glow         { box-shadow: 0 0 32px -4px color-mix(in srgb, var(--brand) 40%, transparent); }
