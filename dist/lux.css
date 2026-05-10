@@ -859,6 +859,67 @@
 }
 
 @layer lux.utilities {
+  /* ── Keyframes ── */
+  @keyframes lux-fade-up   { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes lux-fade-down { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes lux-fade-in   { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes lux-scale-in  { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+  @keyframes lux-slide-right { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes lux-slide-left  { from { opacity: 0; transform: translateX(16px);  } to { opacity: 1; transform: translateX(0); } }
+  @keyframes lux-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  @keyframes lux-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+  /* ── Animation utilities ── */
+  .animate-fade-up    { animation: lux-fade-up    var(--t-slow) var(--ease) both; }
+  .animate-fade-down  { animation: lux-fade-down  var(--t-slow) var(--ease) both; }
+  .animate-fade-in    { animation: lux-fade-in    var(--t-slow) var(--ease) both; }
+  .animate-scale-in   { animation: lux-scale-in   var(--t-slow) var(--ease) both; }
+  .animate-slide-right { animation: lux-slide-right var(--t-slow) var(--ease) both; }
+  .animate-slide-left  { animation: lux-slide-left  var(--t-slow) var(--ease) both; }
+  .animate-pulse      { animation: lux-pulse      2s ease-in-out infinite; }
+  .animate-spin       { animation: lux-spin       0.65s linear infinite; }
+  .animate-bounce     { animation: lux-bounce     1s ease-in-out infinite; }
+
+  /* ── Delay utilities ── */
+  .delay-75   { animation-delay: 75ms; }
+  .delay-100  { animation-delay: 100ms; }
+  .delay-150  { animation-delay: 150ms; }
+  .delay-200  { animation-delay: 200ms; }
+  .delay-300  { animation-delay: 300ms; }
+  .delay-500  { animation-delay: 500ms; }
+  .delay-700  { animation-delay: 700ms; }
+
+  /* ── Duration overrides ── */
+  .duration-fast { animation-duration: var(--t-fast); }
+  .duration-slow { animation-duration: 500ms; }
+  .duration-lazy { animation-duration: 800ms; }
+
+  /* ── Scroll-triggered (view timeline — Chrome 115+, with JS fallback) ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal.delay-1 { transition-delay: 100ms; }
+  .reveal.delay-2 { transition-delay: 200ms; }
+  .reveal.delay-3 { transition-delay: 300ms; }
+  .reveal.delay-4 { transition-delay: 400ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+}
+
+@layer lux.utilities {
   /* Layout */
   .flex      { display: flex; }
   .flex-col  { display: flex; flex-direction: column; }

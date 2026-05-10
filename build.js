@@ -8,7 +8,7 @@ const CSS_ORDER = [
   'button', 'form', 'card', 'badge', 'alert',
   'table', 'dialog', 'accordion', 'tabs',
   'progress', 'toast', 'dropdown',
-  'avatar', 'tooltip', 'nav', 'utilities',
+  'avatar', 'tooltip', 'nav', 'animations', 'utilities',
 ];
 
 async function buildCSS() {
