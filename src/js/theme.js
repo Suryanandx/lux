@@ -63,20 +63,27 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
   if (theme.mode === 'system') applyMode('system');
 });
 
+function syncPressed() {
+  document.querySelectorAll('[data-theme-mode]').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.themeMode === theme.mode))
+  );
+  document.querySelectorAll('[data-theme-brand]').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.themeBrand === theme.brand))
+  );
+}
+
 document.addEventListener('click', e => {
   const modeBtn = e.target.closest('[data-theme-mode]');
   if (modeBtn) {
+    e.preventDefault();
     theme.setMode(modeBtn.dataset.themeMode);
-    document.querySelectorAll('[data-theme-mode]').forEach(b =>
-      b.setAttribute('aria-pressed', String(b.dataset.themeMode === theme.mode))
-    );
+    syncPressed();
   }
   const brandBtn = e.target.closest('[data-theme-brand]');
   if (brandBtn) {
+    e.preventDefault();
     theme.setBrand(brandBtn.dataset.themeBrand);
-    document.querySelectorAll('[data-theme-brand]').forEach(b =>
-      b.setAttribute('aria-pressed', String(b.dataset.themeBrand === theme.brand))
-    );
+    syncPressed();
   }
 });
 

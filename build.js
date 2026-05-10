@@ -10,6 +10,7 @@ const CSS_ORDER = [
   'progress', 'toast', 'dropdown',
   'avatar', 'tooltip', 'nav', 'cmdk',
   'components-extra', 'components-pro',
+  'wiki',
   'animations', 'animations-pro', 'utilities',
 ];
 

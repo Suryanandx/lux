@@ -65,33 +65,44 @@
 </head>
 <body>
 
-<aside class="sidebar">
-  <a class="sidebar-logo" href="../index.html">
+<aside class="docs-sidebar sidebar">
+  <a class="docs-sidebar-brand sidebar-logo" href="../index.html">
     <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="5" fill="#6366f1"/><path d="M5 13h10M5 10l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Lux
+    Lux<span class="docs-sidebar-brand-tag">v0.3</span>
   </a>
-  <div class="sidebar-section">Actions</div>
+  <div class="docs-sidebar-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search components" oninput="filterDocs(this.value)" />
+    <span class="kbd">⌘K</span>
+  </div>
+  <div class="docs-section sidebar-section">Get started</div>
+  <a href="../index.html">Overview</a>
+  <a href="../usage/index.html">Install & Usage</a>
+  <a href="../theming/index.html">Theming</a>
+  <a href="../examples/index.html">Examples</a>
+  <a href="../showcase/index.html">Showcase</a>
+  <div class="docs-section sidebar-section">Actions</div>
   <a href="#buttons">Button</a>
-  <a href="#dropdown">Dropdown</a>
-  <div class="sidebar-section">Forms</div>
+  <a href="#dropdown">Dropdown <span class="count-badge">JS</span></a>
+  <div class="docs-section sidebar-section">Forms</div>
   <a href="#forms">Inputs</a>
   <a href="#checkbox">Checkbox · Radio</a>
   <a href="#switch">Switch</a>
-  <div class="sidebar-section">Layout</div>
+  <div class="docs-section sidebar-section">Layout</div>
   <a href="#cards">Card</a>
   <a href="#table">Table</a>
   <a href="#nav">Nav · Breadcrumb</a>
-  <div class="sidebar-section">Feedback</div>
+  <div class="docs-section sidebar-section">Feedback</div>
   <a href="#alerts">Alert</a>
   <a href="#badges">Badge</a>
-  <a href="#toast">Toast</a>
+  <a href="#toast">Toast <span class="count-badge">JS</span></a>
   <a href="#progress">Progress · Spinner</a>
   <a href="#skeleton">Skeleton</a>
-  <div class="sidebar-section">Navigation</div>
-  <a href="#tabs">Tabs</a>
+  <div class="docs-section sidebar-section">Navigation</div>
+  <a href="#tabs">Tabs <span class="count-badge">JS</span></a>
   <a href="#accordion">Accordion</a>
   <a href="#pagination">Pagination</a>
-  <div class="sidebar-section">Display</div>
+  <div class="docs-section sidebar-section">Display</div>
   <a href="#avatars">Avatar</a>
   <a href="#tooltip">Tooltip</a>
   <a href="#dialog">Dialog · Sheet</a>
@@ -721,6 +732,32 @@ const obs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.2 });
 sections.forEach(s => obs.observe(s));
+
+// Sidebar live filter
+function filterDocs(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.sidebar a[href^="#"]').forEach(a => {
+    const match = !q || a.textContent.toLowerCase().includes(q);
+    a.style.display = match ? '' : 'none';
+  });
+  document.querySelectorAll('.sidebar-section').forEach(s => {
+    let next = s.nextElementSibling;
+    let anyVisible = false;
+    while (next && !next.classList.contains('sidebar-section')) {
+      if (next.tagName === 'A' && next.style.display !== 'none') anyVisible = true;
+      next = next.nextElementSibling;
+    }
+    s.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+// ⌘K focuses search
+document.addEventListener('keydown', e => {
+  if ((e.key === '/' && !/^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName))) {
+    e.preventDefault();
+    document.querySelector('.docs-sidebar-search input')?.focus();
+  }
+});
 </script>
 </body>
 </html>
