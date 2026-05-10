@@ -5,6 +5,10 @@
   html { -webkit-font-smoothing: antialiased; text-size-adjust: 100%; tab-size: 4; }
   body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: var(--text-sm); line-height: 1.6; }
   img, svg, video { display: block; max-width: 100%; }
+  /* SVGs without explicit dims fall back to font-size so icons inside text stay text-sized */
+  svg:not([width]):not([class*="icon"]):not([class*="logo"]) { width: 1em; height: 1em; }
+  /* Icons inherit text color by default */
+  svg { color: inherit; }
   input, button, textarea, select { font: inherit; }
   p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
   dialog { color: inherit; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s-6); }
