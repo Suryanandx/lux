@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipes — Lux UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/lux.min.css" />
+  <style>
+    :root { --brand: #6366f1; }
+    body { font-family: var(--font-sans); display: flex; min-height: 100vh; }
+    .sidebar { width: 220px; flex-shrink: 0; height: 100vh; position: sticky; top: 0; overflow-y: auto; border-right: 1px solid var(--border); padding: var(--s-4) var(--s-3); background: var(--bg-subtle); }
+    .sidebar-logo { display: flex; align-items: center; gap: var(--s-2); font-size: var(--text-sm); font-weight: 700; color: var(--text); text-decoration: none; padding: var(--s-2) var(--s-3); margin-bottom: var(--s-4); letter-spacing: -0.02em; }
+    .sidebar-section { font-size: 10px; font-weight: 700; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.08em; padding: var(--s-3) var(--s-3) var(--s-1); }
+    .sidebar a { display: block; padding: var(--s-2) var(--s-3); font-size: var(--text-sm); color: var(--text-muted); text-decoration: none; border-radius: var(--r-sm); transition: all var(--t-fast); }
+    .sidebar a:hover { background: var(--bg-muted); color: var(--text); }
+    .sidebar a.active { background: var(--brand-muted); color: var(--brand); font-weight: 500; }
+    .content { flex: 1; }
+    .content-inner { max-width: 800px; padding: var(--s-10); }
+    h2 { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin: var(--s-10) 0 var(--s-2); padding-top: var(--s-4); border-top: 1px solid var(--border); }
+    h2:first-of-type { border-top: none; margin-top: 0; }
+    p { color: var(--text-muted); line-height: 1.7; margin-bottom: var(--s-4); }
+    .recipe-demo { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--r-xl); padding: var(--s-8); margin: var(--s-4) 0 var(--s-2); display: flex; justify-content: center; }
+  </style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="sidebar-logo" href="../index.html">
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="5" fill="#6366f1"/><path d="M5 13h10M5 10l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Lux
+  </a>
+  <div class="sidebar-section">Docs</div>
+  <a href="../index.html">Home</a>
+  <a href="../components/index.html">Components</a>
+  <a href="../usage/index.html">Usage</a>
+  <a href="../customizing/index.html">Customizing</a>
+  <a href="index.html" class="active">Recipes</a>
+</aside>
+<div class="content"><div class="content-inner">
+  <h1 style="font-size:var(--text-3xl);font-weight:800;letter-spacing:-0.03em;margin-bottom:var(--s-2)">Recipes</h1>
+  <p>Composite patterns built from Lux components. Copy and adapt.</p>
+
+  <!-- ── Login card ── -->
+  <h2>Auth card</h2>
+  <p>Sign-in form with social buttons, divider, and validation. Common SaaS auth pattern.</p>
+  <div class="recipe-demo">
+    <div class="card" style="width:360px">
+      <div class="card-header">
+        <h3 style="font-size:var(--text-xl)">Sign in</h3>
+        <p style="font-size:var(--text-sm)">Welcome back. Enter your details.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--s-3)">
+        <button data-variant="outline" style="width:100%">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+        <div style="display:flex;align-items:center;gap:var(--s-3);color:var(--text-subtle);font-size:var(--text-xs)">
+          <div style="flex:1;height:1px;background:var(--border)"></div>or<div style="flex:1;height:1px;background:var(--border)"></div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" placeholder="you@company.com" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" />
+        </div>
+        <button data-variant="brand" style="width:100%;margin-top:var(--s-1)">Sign in</button>
+      </div>
+      <div class="card-footer" style="justify-content:center">
+        <span style="font-size:var(--text-xs);color:var(--text-subtle)">Don't have an account? <a href="#">Sign up free</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Dashboard header ── -->
+  <h2>Dashboard header</h2>
+  <p>Page title with stat strip and CTA. The starting point for any SaaS dashboard page.</p>
+  <div class="recipe-demo" style="display:block">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--s-6);flex-wrap:wrap;gap:var(--s-4)">
+      <div>
+        <div style="display:flex;align-items:center;gap:var(--s-2);margin-bottom:var(--s-1)">
+          <h2 style="margin:0;padding:0;border:none;font-size:var(--text-2xl)">API Usage</h2>
+          <span class="badge dot" data-variant="success">Live</span>
+        </div>
+        <ol class="breadcrumb"><li><a href="#">Dashboard</a></li><li><span aria-current="page">API Usage</span></li></ol>
+      </div>
+      <div style="display:flex;gap:var(--s-2)">
+        <button data-variant="outline" class="sm">Export CSV</button>
+        <button data-variant="brand" class="sm">Add endpoint</button>
+      </div>
+    </div>
+    <div class="cols-3">
+      <div class="stat-card"><div class="stat-label">Total calls</div><div class="stat-value">481K</div><div class="stat-delta up">↑ 14%</div></div>
+      <div class="stat-card"><div class="stat-label">Avg latency</div><div class="stat-value">320ms</div><div class="stat-delta down">↓ 8%</div></div>
+      <div class="stat-card"><div class="stat-label">Error rate</div><div class="stat-value">0.3%</div><div class="stat-delta down">↓ 0.1%</div></div>
+    </div>
+  </div>
+
+  <!-- ── Settings form ── -->
+  <h2>Settings form</h2>
+  <p>Card-based settings layout with section dividers. Standard pattern for SaaS settings pages.</p>
+  <div class="recipe-demo">
+    <div class="card" style="width:100%;max-width:480px">
+      <div class="card-header"><h4>Model settings</h4><p style="font-size:var(--text-sm)">Configure your default inference parameters.</p></div>
+      <div style="display:flex;flex-direction:column;gap:var(--s-4)">
+        <div class="field">
+          <label>Default model</label>
+          <select><option>claude-sonnet-4-6</option><option>gpt-4o</option><option>llama-3.3-70b</option></select>
+        </div>
+        <div class="field">
+          <label>Max tokens</label>
+          <input type="number" value="4096" />
+          <span class="field-hint">Maximum tokens per response.</span>
+        </div>
+        <div style="padding:var(--s-4) 0;border-top:1px solid var(--border)">
+          <div style="font-size:var(--text-sm);font-weight:600;color:var(--text);margin-bottom:var(--s-3)">Features</div>
+          <div style="display:flex;flex-direction:column;gap:var(--s-3)">
+            <label class="checkbox-label" style="justify-content:space-between">Streaming responses<input type="checkbox" role="switch" checked /></label>
+            <label class="checkbox-label" style="justify-content:space-between">Cache prompts<input type="checkbox" role="switch" /></label>
+            <label class="checkbox-label" style="justify-content:space-between">Usage alerts<input type="checkbox" role="switch" checked /></label>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button data-variant="ghost">Reset defaults</button>
+        <button data-variant="brand" onclick="lux.toast.success({title:'Saved',message:'Model settings updated.'})">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Empty state ── -->
+  <h2>Empty state</h2>
+  <p>For when a table or list has no data yet.</p>
+  <div class="recipe-demo">
+    <div class="empty" style="border:1px solid var(--border);border-radius:var(--r-xl);width:100%">
+      <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <h3>No API keys yet</h3>
+      <p>Create your first API key to start making requests. Keys are scoped to environments.</p>
+      <button data-variant="brand">Create API key</button>
+    </div>
+  </div>
+
+  <!-- ── Confirm delete ── -->
+  <h2>Destructive confirmation</h2>
+  <p>Dialog pattern for irreversible actions. Always use <code>data-variant="danger"</code> on the primary action.</p>
+  <div class="recipe-demo">
+    <button data-variant="danger" data-dialog="confirm-delete">Delete project</button>
+    <dialog id="confirm-delete">
+      <div class="dialog-header">
+        <h3>Delete "Project Alpha"?</h3>
+        <p>This will permanently delete the project, all its deployments, and usage history. This action cannot be undone.</p>
+      </div>
+      <div class="dialog-body">
+        <div class="alert" data-variant="danger">
+          <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+          <div class="alert-content"><div class="alert-title">This is permanent</div>All 14 deployments and 3 months of logs will be deleted.</div>
+        </div>
+        <div class="field" style="margin-top:var(--s-4)">
+          <label>Type <strong>Project Alpha</strong> to confirm</label>
+          <input type="text" placeholder="Project Alpha" id="confirm-input" />
+        </div>
+      </div>
+      <div class="dialog-footer">
+        <button data-variant="ghost" data-dialog-close>Cancel</button>
+        <button data-variant="danger" onclick="lux.toast.error({title:'Project deleted',message:'Project Alpha has been removed.'});this.closest('dialog').close()">Delete project</button>
+      </div>
+    </dialog>
+  </div>
+
+  <!-- ── Notification feed ── -->
+  <h2>Activity feed</h2>
+  <p>Timeline of events with avatar, timestamp, and badge. Common in dashboards and audit logs.</p>
+  <div class="recipe-demo">
+    <div class="card" style="width:100%;max-width:440px;padding:0;overflow:hidden">
+      <div style="padding:var(--s-4) var(--s-5);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:var(--text-sm);font-weight:600;color:var(--text)">Recent activity</span>
+        <a href="#" style="font-size:var(--text-xs)">View all</a>
+      </div>
+      <div class="divide-y">
+        <div style="display:flex;gap:var(--s-3);padding:var(--s-4) var(--s-5);align-items:flex-start">
+          <div class="avatar sm" style="background:linear-gradient(135deg,#6366f1,#06b6d4);flex-shrink:0">SR</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:var(--text-sm);color:var(--text)"><strong>Suryanand</strong> deployed v2.4.1 <span class="badge dot sm" data-variant="success">Success</span></div>
+            <div style="font-size:var(--text-xs);color:var(--text-subtle);margin-top:2px">2 minutes ago · Production</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:var(--s-3);padding:var(--s-4) var(--s-5);align-items:flex-start">
+          <div class="avatar sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444);flex-shrink:0">MK</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:var(--text-sm);color:var(--text)"><strong>MK</strong> added API key <code style="font-size:11px">sk-proj-…x4f2</code></div>
+            <div style="font-size:var(--text-xs);color:var(--text-subtle);margin-top:2px">1 hour ago · Settings</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:var(--s-3);padding:var(--s-4) var(--s-5);align-items:flex-start">
+          <div class="avatar sm" style="background:linear-gradient(135deg,#ef4444,#f59e0b);flex-shrink:0">!</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:var(--text-sm);color:var(--text)">Build failed on <code style="font-size:11px">feat/new-model</code> <span class="badge dot sm" data-variant="danger">Error</span></div>
+            <div style="font-size:var(--text-xs);color:var(--text-subtle);margin-top:2px">3 hours ago · CI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+<script src="../static/lux.min.js"></script>
+</body></html>

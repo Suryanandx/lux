@@ -1,0 +1,11 @@
+{
+  "outputDirectory": "docs",
+  "routes": [
+    { "src": "/components", "dest": "/components/index.html" },
+    { "src": "/usage",      "dest": "/usage/index.html" },
+    { "src": "/customizing","dest": "/customizing/index.html" },
+    { "src": "/recipes",    "dest": "/recipes/index.html" },
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)",       "dest": "/index.html" }
+  ]
+}

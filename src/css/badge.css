@@ -1,0 +1,28 @@
+@layer lux.components {
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    height: 20px; padding: 0 var(--s-2);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+    background: var(--bg-muted); color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: var(--r-full);
+    white-space: nowrap; line-height: 1;
+  }
+  .badge.md { height: 24px; padding: 0 var(--s-3); font-size: var(--text-xs); }
+  .badge.lg { height: 28px; padding: 0 var(--s-3); font-size: var(--text-sm); }
+
+  .badge[data-variant="brand"]   { background: var(--brand-muted); color: var(--brand); border-color: color-mix(in srgb, var(--brand) 30%, transparent); }
+  .badge[data-variant="success"] { background: var(--success-bg);  color: var(--success); border-color: var(--success-border); }
+  .badge[data-variant="warning"] { background: var(--warning-bg);  color: var(--warning); border-color: var(--warning-border); }
+  .badge[data-variant="danger"]  { background: var(--danger-bg);   color: var(--danger);  border-color: var(--danger-border); }
+  .badge[data-variant="info"]    { background: var(--info-bg);     color: var(--info);    border-color: var(--info-border); }
+
+  /* Dot indicator */
+  .badge::before {
+    content: none; width: 6px; height: 6px; border-radius: var(--r-full); flex-shrink: 0;
+  }
+  .badge.dot::before { content: ""; background: currentColor; }
+  .badge[data-variant="brand"].dot::before   { background: var(--brand); }
+  .badge[data-variant="success"].dot::before { background: var(--success); }
+  .badge[data-variant="warning"].dot::before { background: var(--warning); }
+  .badge[data-variant="danger"].dot::before  { background: var(--danger); }
+}

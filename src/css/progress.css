@@ -1,0 +1,36 @@
+@layer lux.components {
+  /* ── Progress bar ── */
+  progress {
+    width: 100%; height: 6px; appearance: none; -webkit-appearance: none;
+    background: var(--bg-muted); border: none; border-radius: var(--r-full); overflow: hidden;
+  }
+  progress::-webkit-progress-bar   { background: var(--bg-muted); border-radius: var(--r-full); }
+  progress::-webkit-progress-value { background: var(--brand); border-radius: var(--r-full); transition: width var(--t-slow); }
+  progress::-moz-progress-bar      { background: var(--brand); border-radius: var(--r-full); }
+  progress.sm { height: 3px; }
+  progress.lg { height: 10px; }
+
+  /* ── Spinner ── */
+  .spinner {
+    width: 20px; height: 20px; border-radius: var(--r-full);
+    border: 2px solid var(--border); border-top-color: var(--brand);
+    animation: lux-spin 0.65s linear infinite; flex-shrink: 0;
+  }
+  .spinner.sm { width: 14px; height: 14px; border-width: 1.5px; }
+  .spinner.lg { width: 32px; height: 32px; border-width: 3px; }
+  .spinner.xl { width: 48px; height: 48px; border-width: 4px; }
+
+  /* ── Skeleton ── */
+  .skeleton {
+    background: linear-gradient(90deg, var(--bg-muted) 25%, var(--bg-subtle) 50%, var(--bg-muted) 75%);
+    background-size: 200% 100%; border-radius: var(--r);
+    animation: lux-shimmer 1.6s ease-in-out infinite;
+  }
+  .skeleton.text  { height: 1em; border-radius: var(--r-sm); }
+  .skeleton.title { height: 1.5em; border-radius: var(--r-sm); }
+  .skeleton.circle { border-radius: var(--r-full); }
+  .skeleton.card  { height: 120px; border-radius: var(--r-lg); }
+
+  @keyframes lux-spin    { to { transform: rotate(360deg); } }
+  @keyframes lux-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+}

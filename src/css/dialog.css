@@ -1,0 +1,44 @@
+@layer lux.components {
+  dialog {
+    position: fixed; inset: 0; margin: auto;
+    width: min(560px, calc(100vw - var(--s-8)));
+    max-height: calc(100vh - var(--s-8));
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--r-xl); padding: 0;
+    box-shadow: var(--shadow-lg), 0 0 0 1px light-dark(rgba(0,0,0,0.04), rgba(255,255,255,0.03));
+    overflow: hidden;
+    animation: lux-dialog-in var(--t-slow) var(--ease);
+  }
+  dialog::backdrop {
+    background: light-dark(rgba(0,0,0,0.35), rgba(0,0,0,0.65));
+    backdrop-filter: blur(4px);
+    animation: lux-fade-in 150ms ease;
+  }
+  dialog:not([open]) { display: none; }
+
+  .dialog-header { padding: var(--s-5) var(--s-6) var(--s-4); border-bottom: 1px solid var(--border); }
+  .dialog-header h2, .dialog-header h3 { font-size: var(--text-lg); font-weight: 600; color: var(--text); margin-bottom: var(--s-1); }
+  .dialog-header p { font-size: var(--text-sm); color: var(--text-muted); }
+  .dialog-body    { padding: var(--s-6); overflow-y: auto; max-height: calc(80vh - 140px); }
+  .dialog-footer  { padding: var(--s-4) var(--s-6); border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: var(--s-3); background: var(--bg-subtle); }
+
+  /* Sheet (slides from right) */
+  dialog[data-variant="sheet"] {
+    position: fixed; inset: 0 0 0 auto; margin: 0;
+    width: min(440px, 100vw); height: 100vh; max-height: 100vh;
+    border-radius: var(--r-xl) 0 0 var(--r-xl);
+    animation: lux-sheet-in var(--t-slow) var(--ease);
+  }
+
+  @keyframes lux-dialog-in {
+    from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes lux-sheet-in {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes lux-fade-in {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+}

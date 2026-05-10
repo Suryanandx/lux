@@ -1,0 +1,39 @@
+@layer lux.components {
+  lux-tabs { display: block; }
+
+  .tabs-list {
+    display: flex; gap: 2px; padding: 3px;
+    background: var(--bg-muted); border-radius: var(--r);
+    width: fit-content;
+  }
+  .tabs-list [role="tab"] {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    height: 30px; padding: 0 var(--s-3);
+    font-size: var(--text-sm); font-weight: 500; color: var(--text-subtle);
+    background: transparent; border: none; border-radius: var(--r-sm);
+    cursor: pointer; transition: all var(--t-fast); white-space: nowrap;
+  }
+  .tabs-list [role="tab"]:hover { color: var(--text); background: var(--bg-subtle); }
+  .tabs-list [role="tab"][aria-selected="true"] {
+    background: var(--bg); color: var(--text);
+    box-shadow: var(--shadow-sm), 0 0 0 1px var(--border);
+  }
+
+  /* Underline variant */
+  .tabs-list.underline {
+    background: transparent; padding: 0; gap: 0;
+    border-bottom: 1px solid var(--border); border-radius: 0; width: 100%;
+  }
+  .tabs-list.underline [role="tab"] {
+    border-radius: 0; height: 38px; padding: 0 var(--s-4);
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .tabs-list.underline [role="tab"][aria-selected="true"] {
+    background: transparent; box-shadow: none;
+    color: var(--text); border-bottom-color: var(--brand);
+  }
+
+  [role="tabpanel"] { padding-top: var(--s-5); }
+  [role="tabpanel"]:focus-visible { outline: none; }
+  [role="tabpanel"][hidden] { display: none; }
+}

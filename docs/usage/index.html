@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage — Lux UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/lux.min.css" />
+  <style>
+    :root { --brand: #6366f1; }
+    body { font-family: var(--font-sans); display: flex; min-height: 100vh; }
+    .sidebar { width: 220px; flex-shrink: 0; height: 100vh; position: sticky; top: 0; overflow-y: auto; border-right: 1px solid var(--border); padding: var(--s-4) var(--s-3); background: var(--bg-subtle); }
+    .sidebar-logo { display: flex; align-items: center; gap: var(--s-2); font-size: var(--text-sm); font-weight: 700; color: var(--text); text-decoration: none; padding: var(--s-2) var(--s-3); margin-bottom: var(--s-4); letter-spacing: -0.02em; }
+    .sidebar-section { font-size: 10px; font-weight: 700; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.08em; padding: var(--s-3) var(--s-3) var(--s-1); }
+    .sidebar a { display: block; padding: var(--s-2) var(--s-3); font-size: var(--text-sm); color: var(--text-muted); text-decoration: none; border-radius: var(--r-sm); transition: all var(--t-fast); }
+    .sidebar a:hover { background: var(--bg-muted); color: var(--text); }
+    .sidebar a.active { background: var(--brand-muted); color: var(--brand); font-weight: 500; }
+    .content { flex: 1; }
+    .content-inner { max-width: 720px; padding: var(--s-10); }
+    .code-block { background: #0d0d0f; border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s-4) var(--s-5); font-family: var(--font-mono); font-size: var(--text-xs); color: #a5b4fc; overflow-x: auto; line-height: 1.7; margin: var(--s-4) 0; }
+    .code-block .tok-tag { color: #7dd3fc; } .code-block .tok-attr { color: #a5b4fc; } .code-block .tok-val { color: #86efac; } .code-block .tok-cmt { color: #4b5563; }
+    h2 { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin: var(--s-10) 0 var(--s-2); padding-top: var(--s-4); border-top: 1px solid var(--border); }
+    h2:first-of-type { border-top: none; margin-top: 0; }
+    h3 { font-size: var(--text-base); font-weight: 600; color: var(--text); margin: var(--s-6) 0 var(--s-2); }
+    p { color: var(--text-muted); line-height: 1.7; margin-bottom: var(--s-3); }
+    ul { color: var(--text-muted); padding-left: var(--s-5); line-height: 1.8; }
+    li { margin-bottom: var(--s-1); }
+  </style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="sidebar-logo" href="../index.html">
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="5" fill="#6366f1"/><path d="M5 13h10M5 10l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Lux
+  </a>
+  <div class="sidebar-section">Docs</div>
+  <a href="../index.html">Home</a>
+  <a href="../components/index.html">Components</a>
+  <a href="index.html" class="active">Usage</a>
+  <a href="../customizing/index.html">Customizing</a>
+  <a href="../recipes/index.html">Recipes</a>
+</aside>
+<div class="content"><div class="content-inner">
+  <h1 style="font-size:var(--text-3xl);font-weight:800;letter-spacing:-0.03em;margin-bottom:var(--s-2)">Usage</h1>
+  <p>Get Lux into your project in under two minutes.</p>
+
+  <h2>CDN (fastest)</h2>
+  <p>Drop two tags into your HTML <code>&lt;head&gt;</code>. No build step, no npm, no config.</p>
+  <div class="code-block"><span class="tok-tag">&lt;link</span> <span class="tok-attr">rel</span>=<span class="tok-val">"stylesheet"</span>
+     <span class="tok-attr">href</span>=<span class="tok-val">"https://cdn.jsdelivr.net/npm/@suryanandx/lux/dist/lux.min.css"</span><span class="tok-tag">&gt;</span>
+<span class="tok-tag">&lt;script</span> <span class="tok-attr">src</span>=<span class="tok-val">"https://cdn.jsdelivr.net/npm/@suryanandx/lux/dist/lux.min.js"</span><span class="tok-tag">&gt;&lt;/script&gt;</span></div>
+
+  <h2>npm</h2>
+  <div class="code-block">npm install @suryanandx/lux
+<span class="tok-cmt"># or</span>
+pnpm add @suryanandx/lux</div>
+  <p>Then import in your entry file:</p>
+  <div class="code-block"><span class="tok-cmt">// CSS (via bundler)</span>
+import <span class="tok-val">'@suryanandx/lux/dist/lux.min.css'</span>;
+
+<span class="tok-cmt">// JS (web components + toast API)</span>
+import <span class="tok-val">'@suryanandx/lux/dist/lux.min.js'</span>;</div>
+
+  <h2>Starter template</h2>
+  <p>Full HTML page ready to copy:</p>
+  <div class="code-block"><span class="tok-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tok-tag">&lt;html</span> <span class="tok-attr">lang</span>=<span class="tok-val">"en"</span><span class="tok-tag">&gt;</span>
+<span class="tok-tag">&lt;head&gt;</span>
+  <span class="tok-tag">&lt;meta</span> <span class="tok-attr">charset</span>=<span class="tok-val">"UTF-8"</span> <span class="tok-tag">/&gt;</span>
+  <span class="tok-tag">&lt;meta</span> <span class="tok-attr">name</span>=<span class="tok-val">"viewport"</span> <span class="tok-attr">content</span>=<span class="tok-val">"width=device-width, initial-scale=1.0"</span> <span class="tok-tag">/&gt;</span>
+  <span class="tok-cmt">&lt;!-- Optional: Inter font --&gt;</span>
+  <span class="tok-tag">&lt;link</span> <span class="tok-attr">href</span>=<span class="tok-val">"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"</span> <span class="tok-attr">rel</span>=<span class="tok-val">"stylesheet"</span><span class="tok-tag">&gt;</span>
+  <span class="tok-tag">&lt;link</span> <span class="tok-attr">rel</span>=<span class="tok-val">"stylesheet"</span> <span class="tok-attr">href</span>=<span class="tok-val">"https://cdn.jsdelivr.net/npm/@suryanandx/lux/dist/lux.min.css"</span><span class="tok-tag">&gt;</span>
+  <span class="tok-cmt">&lt;!-- Override brand color --&gt;</span>
+  <span class="tok-tag">&lt;style&gt;</span>:root { --brand: #6366f1; }<span class="tok-tag">&lt;/style&gt;</span>
+<span class="tok-tag">&lt;/head&gt;</span>
+<span class="tok-tag">&lt;body&gt;</span>
+  <span class="tok-tag">&lt;nav&gt;</span>
+    <span class="tok-tag">&lt;a</span> <span class="tok-attr">class</span>=<span class="tok-val">"nav-brand"</span> <span class="tok-attr">href</span>=<span class="tok-val">"/"</span><span class="tok-tag">&gt;</span>MyApp<span class="tok-tag">&lt;/a&gt;</span>
+    <span class="tok-tag">&lt;div</span> <span class="tok-attr">class</span>=<span class="tok-val">"nav-end"</span><span class="tok-tag">&gt;</span>
+      <span class="tok-tag">&lt;button</span> <span class="tok-attr">data-variant</span>=<span class="tok-val">"brand"</span><span class="tok-tag">&gt;</span>Get started<span class="tok-tag">&lt;/button&gt;</span>
+    <span class="tok-tag">&lt;/div&gt;</span>
+  <span class="tok-tag">&lt;/nav&gt;</span>
+
+  <span class="tok-tag">&lt;main</span> <span class="tok-attr">class</span>=<span class="tok-val">"container"</span> <span class="tok-attr">style</span>=<span class="tok-val">"padding-top:2rem"</span><span class="tok-tag">&gt;</span>
+    <span class="tok-tag">&lt;h1&gt;</span>Hello Lux<span class="tok-tag">&lt;/h1&gt;</span>
+    <span class="tok-tag">&lt;p&gt;</span>Start building.<span class="tok-tag">&lt;/p&gt;</span>
+  <span class="tok-tag">&lt;/main&gt;</span>
+
+  <span class="tok-tag">&lt;script</span> <span class="tok-attr">src</span>=<span class="tok-val">"https://cdn.jsdelivr.net/npm/@suryanandx/lux/dist/lux.min.js"</span><span class="tok-tag">&gt;&lt;/script&gt;</span>
+<span class="tok-tag">&lt;/body&gt;&lt;/html&gt;</span></div>
+
+  <h2>Framework usage</h2>
+  <h3>React / Next.js</h3>
+  <div class="code-block"><span class="tok-cmt">// app/layout.tsx or _app.tsx</span>
+import <span class="tok-val">'@suryanandx/lux/dist/lux.min.css'</span>;
+
+<span class="tok-cmt">// Use HTML attributes — data-variant works in JSX</span>
+<span class="tok-tag">&lt;button</span> <span class="tok-attr">data-variant</span>=<span class="tok-val">"brand"</span><span class="tok-tag">&gt;</span>Deploy<span class="tok-tag">&lt;/button&gt;</span>
+
+<span class="tok-cmt">// Web components need 'use client' or dynamic import</span>
+import dynamic from <span class="tok-val">'next/dynamic'</span>;
+const LuxScript = dynamic(() => import(<span class="tok-val">'@suryanandx/lux/dist/lux.min.js'</span>), { ssr: false });</div>
+
+  <h3>Vue / Nuxt</h3>
+  <div class="code-block"><span class="tok-cmt">// nuxt.config.ts</span>
+css: [<span class="tok-val">'@suryanandx/lux/dist/lux.min.css'</span>]
+
+<span class="tok-cmt">// plugins/lux.client.ts</span>
+import <span class="tok-val">'@suryanandx/lux/dist/lux.min.js'</span></div>
+
+  <h2>JavaScript API</h2>
+  <p>The only runtime API is <code>lux.toast()</code>. Everything else is CSS + HTML.</p>
+  <div class="code-block"><span class="tok-cmt">// Toast</span>
+lux.toast({ title: <span class="tok-val">'Done'</span>, message: <span class="tok-val">'Saved successfully.'</span>, variant: <span class="tok-val">'success'</span> });
+lux.toast.success(<span class="tok-val">'Saved!'</span>);
+lux.toast.error({ title: <span class="tok-val">'Error'</span>, message: <span class="tok-val">'Something went wrong.'</span> });
+
+<span class="tok-cmt">// Dialog (open/close programmatically)</span>
+document.getElementById(<span class="tok-val">'my-dialog'</span>).showModal();
+document.getElementById(<span class="tok-val">'my-dialog'</span>).close();
+
+<span class="tok-cmt">// Listen to custom events</span>
+document.querySelector(<span class="tok-val">'lux-tabs'</span>).addEventListener(<span class="tok-val">'lux:tab'</span>, e => {
+  console.log(<span class="tok-val">'Tab changed:'</span>, e.detail.tab);
+});
+document.querySelector(<span class="tok-val">'lux-dropdown'</span>).addEventListener(<span class="tok-val">'lux:open'</span>, () => {
+  console.log(<span class="tok-val">'Dropdown opened'</span>);
+});</div>
+
+  <h2>Browser support</h2>
+  <p>Lux targets all modern browsers. It uses:</p>
+  <ul>
+    <li><code>light-dark()</code> — Chrome 123+, Firefox 120+, Safari 17.5+</li>
+    <li><code>@layer</code> — Chrome 99+, Firefox 97+, Safari 15.4+</li>
+    <li>Custom Elements (Web Components) — all modern browsers</li>
+    <li>Native <code>&lt;dialog&gt;</code> — Chrome 98+, Firefox 98+, Safari 15.4+</li>
+  </ul>
+  <p>No polyfills needed for any supported browser.</p>
+</div></div>
+<script src="../static/lux.min.js"></script>
+</body></html>

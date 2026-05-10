@@ -1,0 +1,52 @@
+@layer lux.components {
+  /* ── Top nav ── */
+  nav {
+    display: flex; align-items: center; gap: var(--s-1);
+    height: 56px; padding: 0 var(--s-6);
+    background: var(--bg-overlay); border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: var(--z-sticky);
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: var(--s-2);
+    font-size: var(--text-sm); font-weight: 600; color: var(--text);
+    text-decoration: none; margin-right: var(--s-4); letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; align-items: center; gap: 2px; flex: 1; }
+  .nav-links a {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    height: 32px; padding: 0 var(--s-3);
+    font-size: var(--text-sm); font-weight: 500; color: var(--text-muted);
+    border-radius: var(--r-sm); text-decoration: none;
+    transition: background var(--t-fast), color var(--t-fast);
+  }
+  .nav-links a:hover  { background: var(--bg-muted); color: var(--text); }
+  .nav-links a[aria-current="page"] { background: var(--bg-muted); color: var(--text); }
+  .nav-end { display: flex; align-items: center; gap: var(--s-2); margin-left: auto; }
+
+  /* ── Breadcrumb ── */
+  .breadcrumb {
+    display: flex; align-items: center; gap: var(--s-2);
+    font-size: var(--text-sm); color: var(--text-subtle);
+    list-style: none; padding: 0; flex-wrap: wrap;
+  }
+  .breadcrumb li { display: flex; align-items: center; gap: var(--s-2); }
+  .breadcrumb li:not(:last-child)::after { content: "/"; color: var(--border-strong); }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color var(--t-fast); }
+  .breadcrumb a:hover { color: var(--text); }
+  .breadcrumb [aria-current="page"] { color: var(--text); font-weight: 500; }
+
+  /* ── Pagination ── */
+  .pagination { display: flex; align-items: center; gap: var(--s-1); }
+  .pagination button, .pagination a {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 32px; height: 32px; padding: 0 var(--s-2);
+    font-size: var(--text-sm); font-weight: 500; color: var(--text-muted);
+    background: transparent; border: 1px solid transparent;
+    border-radius: var(--r); text-decoration: none;
+    transition: all var(--t-fast); cursor: pointer;
+  }
+  .pagination button:hover, .pagination a:hover { background: var(--bg-muted); color: var(--text); }
+  .pagination [aria-current="page"] { background: var(--bg-muted); color: var(--text); border-color: var(--border); }
+  .pagination-prev, .pagination-next { gap: var(--s-1); padding: 0 var(--s-3); }
+}

@@ -1,0 +1,44 @@
+@layer lux.components {
+  #lux-toast-region {
+    position: fixed; bottom: var(--s-6); right: var(--s-6);
+    z-index: var(--z-toast); display: flex; flex-direction: column;
+    gap: var(--s-2); align-items: flex-end; pointer-events: none;
+    max-width: 400px;
+  }
+
+  .lux-toast {
+    display: flex; align-items: flex-start; gap: var(--s-3);
+    padding: var(--s-3) var(--s-4); min-width: 280px; max-width: 400px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--r-lg); box-shadow: var(--shadow-lg);
+    font-size: var(--text-sm); color: var(--text);
+    pointer-events: all; cursor: default;
+    animation: lux-toast-in var(--t-slow) var(--ease);
+  }
+  .lux-toast.out { animation: lux-toast-out var(--t) var(--ease) forwards; }
+
+  .lux-toast-icon { flex-shrink: 0; width: 16px; height: 16px; margin-top: 1px; }
+  .lux-toast-body { flex: 1; }
+  .lux-toast-title { font-weight: 600; color: var(--text); line-height: 1.4; }
+  .lux-toast-desc  { color: var(--text-muted); margin-top: 1px; }
+  .lux-toast-close {
+    flex-shrink: 0; width: 20px; height: 20px; border: none; background: none;
+    color: var(--text-subtle); cursor: pointer; padding: 0; border-radius: var(--r-sm);
+    display: flex; align-items: center; justify-content: center;
+    transition: color var(--t-fast), background var(--t-fast);
+  }
+  .lux-toast-close:hover { color: var(--text); background: var(--bg-muted); }
+
+  .lux-toast[data-variant="success"] { border-left: 3px solid var(--success); }
+  .lux-toast[data-variant="error"]   { border-left: 3px solid var(--danger); }
+  .lux-toast[data-variant="warning"] { border-left: 3px solid var(--warning); }
+  .lux-toast[data-variant="info"]    { border-left: 3px solid var(--info); }
+
+  .lux-toast[data-variant="success"] .lux-toast-icon { color: var(--success); }
+  .lux-toast[data-variant="error"]   .lux-toast-icon { color: var(--danger); }
+  .lux-toast[data-variant="warning"] .lux-toast-icon { color: var(--warning); }
+  .lux-toast[data-variant="info"]    .lux-toast-icon { color: var(--info); }
+
+  @keyframes lux-toast-in  { from { opacity:0; transform: translateX(16px) scale(0.97); } to { opacity:1; transform: translateX(0) scale(1); } }
+  @keyframes lux-toast-out { from { opacity:1; transform: translateX(0); } to { opacity:0; transform: translateX(16px); } }
+}

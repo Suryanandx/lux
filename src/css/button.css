@@ -1,0 +1,86 @@
+@layer lux.components {
+  button, .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+    height: 36px; padding: 0 var(--s-4);
+    font-size: var(--text-sm); font-weight: 500; letter-spacing: -0.01em;
+    background: var(--accent); color: var(--accent-fg);
+    border: 1px solid transparent; border-radius: var(--r);
+    cursor: pointer; user-select: none; white-space: nowrap;
+    transition: background var(--t-fast), color var(--t-fast), box-shadow var(--t-fast), opacity var(--t-fast);
+    text-decoration: none;
+  }
+  button:hover:not(:disabled), .btn:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+  button:active:not(:disabled), .btn:active:not(:disabled) {
+    opacity: 0.85; transform: scale(0.99);
+  }
+  button:disabled, .btn:disabled {
+    opacity: 0.4; cursor: not-allowed; pointer-events: none;
+  }
+
+  /* Ghost */
+  button[data-variant="ghost"], .btn[data-variant="ghost"] {
+    background: transparent; color: var(--text-muted); border-color: transparent;
+  }
+  button[data-variant="ghost"]:hover, .btn[data-variant="ghost"]:hover {
+    background: var(--bg-muted); color: var(--text);
+  }
+
+  /* Outline */
+  button[data-variant="outline"], .btn[data-variant="outline"] {
+    background: transparent; color: var(--text); border-color: var(--border);
+  }
+  button[data-variant="outline"]:hover, .btn[data-variant="outline"]:hover {
+    background: var(--bg-muted);
+  }
+
+  /* Brand */
+  button[data-variant="brand"], .btn[data-variant="brand"] {
+    background: var(--brand); color: var(--brand-fg); border-color: transparent;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 40%, transparent);
+  }
+  button[data-variant="brand"]:hover, .btn[data-variant="brand"]:hover {
+    background: var(--brand-hover);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--brand) 35%, transparent);
+  }
+
+  /* Danger */
+  button[data-variant="danger"], .btn[data-variant="danger"] {
+    background: var(--danger-bg); color: var(--danger); border-color: var(--danger-border);
+  }
+  button[data-variant="danger"]:hover, .btn[data-variant="danger"]:hover {
+    background: var(--danger); color: #fff;
+  }
+
+  /* Sizes */
+  button.sm, .btn.sm { height: 28px; padding: 0 var(--s-3); font-size: var(--text-xs); border-radius: var(--r-sm); }
+  button.lg, .btn.lg { height: 44px; padding: 0 var(--s-6); font-size: var(--text-base); }
+  button.xl, .btn.xl { height: 52px; padding: 0 var(--s-8); font-size: var(--text-lg); border-radius: var(--r-lg); }
+  button.icon, .btn.icon { width: 36px; padding: 0; }
+  button.icon.sm, .btn.icon.sm { width: 28px; }
+  button.icon.lg, .btn.icon.lg { width: 44px; }
+
+  /* Loading */
+  button[aria-busy="true"], .btn[aria-busy="true"] {
+    cursor: wait; pointer-events: none; position: relative; color: transparent;
+  }
+  button[aria-busy="true"]::after, .btn[aria-busy="true"]::after {
+    content: ""; position: absolute; width: 14px; height: 14px;
+    border: 2px solid currentColor; border-top-color: transparent;
+    border-radius: var(--r-full); animation: lux-spin 0.6s linear infinite;
+    color: var(--accent-fg);
+  }
+  button[data-variant="brand"][aria-busy="true"]::after { color: var(--brand-fg); }
+  button[data-variant="outline"][aria-busy="true"]::after,
+  button[data-variant="ghost"][aria-busy="true"]::after { color: var(--text); }
+
+  /* Button group */
+  .btn-group { display: inline-flex; }
+  .btn-group > button, .btn-group > .btn {
+    border-radius: 0;
+    border-right-width: 0;
+  }
+  .btn-group > :first-child { border-radius: var(--r) 0 0 var(--r); }
+  .btn-group > :last-child  { border-radius: 0 var(--r) var(--r) 0; border-right-width: 1px; }
+}

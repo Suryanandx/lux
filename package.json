@@ -1,0 +1,21 @@
+{
+  "name": "@suryanandx/lux",
+  "version": "0.1.0",
+  "description": "Zero-weight UI kit for modern SaaS. ~8KB. No dependencies.",
+  "author": "Suryanand <systems@valnoraelric.com> (https://suryanand.com)",
+  "license": "MIT",
+  "homepage": "https://lux.valthrax.com",
+  "repository": { "type": "git", "url": "https://github.com/Suryanandx/lux" },
+  "main": "dist/lux.min.js",
+  "style": "dist/lux.min.css",
+  "files": ["dist"],
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch",
+    "size": "node -e \"const fs=require('fs');const z=require('zlib');['dist/lux.min.css','dist/lux.min.js'].forEach(f=>{const s=fs.statSync(f).size;const g=z.gzipSync(fs.readFileSync(f)).length;console.log(f,s+'B raw',g+'B gz');})\"",
+    "test": "node test/runner.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
