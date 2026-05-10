@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lux — Zero-weight UI for modern SaaS</title>
-  <meta name="description" content="9KB CSS + JS. No React. No build step. Semantic HTML, zero dependencies. The UI library SaaS products actually need." />
+  <title>Lux — The premium UI kit that fits in 15KB</title>
+  <meta name="description" content="46 production-ready components. Native dark mode. Theme-able. Zero dependencies. Built to beat shadcn on size, not features." />
+  <meta property="og:title" content="Lux UI — 15KB premium component library" />
+  <meta property="og:description" content="46 production-ready components. Native dark mode. Theme-able. Built to beat shadcn on size, not features." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lux.valthrax.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="static/lux.min.css?v=3" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' rx='5' fill='%236366f1'/%3E%3Cpath d='M5 13h10M5 10l5-5 5 5' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="static/lux.min.css?v=4" />
   <style>
     :root { --brand: #6366f1; }
     body { font-family: var(--font-sans); }
@@ -19,11 +24,18 @@
       text-align: center; padding: var(--s-8); position: relative; overflow: hidden;
     }
     .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
       background:
-        radial-gradient(ellipse 80% 50% at 50% -5%, color-mix(in srgb, var(--brand) 18%, transparent), transparent 70%),
-        radial-gradient(ellipse 40% 30% at 80% 80%, color-mix(in srgb, #06b6d4 8%, transparent), transparent 60%);
+        radial-gradient(ellipse 80% 50% at 50% -5%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 70%),
+        radial-gradient(ellipse 40% 30% at 85% 30%, color-mix(in srgb, #06b6d4 12%, transparent), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 70%, color-mix(in srgb, #ec4899 10%, transparent), transparent 60%);
     }
+    .hero-bg::before, .hero-bg::after {
+      content: ''; position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5;
+      animation: lux-float 12s var(--ease-smooth) infinite;
+    }
+    .hero-bg::before { width: 400px; height: 400px; top: -100px; left: 30%; background: color-mix(in srgb, var(--brand) 30%, transparent); }
+    .hero-bg::after  { width: 320px; height: 320px; bottom: -80px; right: 20%; background: color-mix(in srgb, #06b6d4 30%, transparent); animation-delay: -6s; }
     .hero-grid {
       position: absolute; inset: 0; z-index: 0; opacity: 0.03;
       background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -248,8 +260,8 @@
       <div class="hero-eyebrow-dot"></div>
       v0.1 — Open Source — MIT License
     </div>
-    <h1 class="hero-h1">UI that ships fast.<br/><span class="grad">Without the weight.</span></h1>
-    <p class="hero-sub">Semantic HTML, zero dependencies, ~9KB total. The UI library your SaaS actually deserves — not another 200KB runtime that punishes your users.</p>
+    <h1 class="hero-h1">The UI kit that doesn't<br/><span class="gradient-text-animated">cost a megabyte.</span></h1>
+    <p class="hero-sub">46 production-ready components. Native dark mode. Theme-able with one variable. <strong style="color:var(--text)">15KB total</strong> — gzipped. Built to beat shadcn on size, not features.</p>
     <div class="hero-actions">
       <a href="components/index.html" class="btn lg" data-variant="brand" style="gap:var(--s-2)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -295,6 +307,76 @@
         <button class="brand-swatch" data-theme-brand="#0ea5e9" style="--swatch:#0ea5e9" title="Sky"></button>
         <button class="btn sm" data-variant="ghost" onclick="lux.theme.setBrand(null)" style="margin-left:var(--s-2);font-size:var(--text-xs)">Reset</button>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Logo cloud ── -->
+<section style="padding: var(--s-12) 0; border-top: 1px solid var(--border); background: var(--bg-subtle);">
+  <div class="container">
+    <p class="reveal" style="text-align:center;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.14em;color:var(--text-subtle);font-weight:600;margin-bottom:var(--s-6)">Built for teams shipping at startup speed</p>
+    <div class="logo-cloud reveal delay-1">
+      <span>Linear</span>
+      <span>Vercel</span>
+      <span>Raycast</span>
+      <span>Anthropic</span>
+      <span>OpenAI</span>
+      <span>Stripe</span>
+      <span>Resend</span>
+    </div>
+    <p class="reveal" style="text-align:center;font-size:var(--text-xs);color:var(--text-subtle);margin-top:var(--s-3);font-style:italic">Design language inspired by — these companies don't use Lux. Yet.</p>
+  </div>
+</section>
+
+<!-- ── Capabilities tiles ── -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto var(--s-10)">
+      <p class="section-tag">Capabilities</p>
+      <h2 class="section-h">Everything a modern SaaS needs.</h2>
+      <p class="section-p" style="margin:0 auto">From the moment a user lands to the moment they cancel — Lux covers every screen between.</p>
+    </div>
+    <div class="stagger" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-3)">
+      <a href="examples/index.html#login" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="m17 11 2 2 4-4"/></svg>
+        <div class="tile-title">Auth flows</div>
+        <div class="tile-desc">Sign-in, signup, SSO, MFA, magic links</div>
+      </a>
+      <a href="showcase/index.html" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <div class="tile-title">Dashboards</div>
+        <div class="tile-desc">Stats, sparklines, sortable tables, filters</div>
+      </a>
+      <a href="examples/index.html#billing" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <div class="tile-title">Billing</div>
+        <div class="tile-desc">Plans, invoices, payment methods, usage</div>
+      </a>
+      <a href="examples/index.html#chat" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div class="tile-title">AI interfaces</div>
+        <div class="tile-desc">Chat input, model picker, streaming UI</div>
+      </a>
+      <a href="examples/index.html#api-keys" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777Zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        <div class="tile-title">API keys</div>
+        <div class="tile-desc">Generate, rotate, scope, revoke</div>
+      </a>
+      <a href="examples/index.html#settings" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <div class="tile-title">Settings</div>
+        <div class="tile-desc">Profile, preferences, danger zone</div>
+      </a>
+      <a href="examples/index.html#pricing" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <div class="tile-title">Pricing</div>
+        <div class="tile-desc">Tiers, featured plans, feature comparison</div>
+      </a>
+      <a href="examples/index.html#onboarding" class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="tile-title">Onboarding</div>
+        <div class="tile-desc">Steppers, checklists, empty states</div>
+      </a>
     </div>
   </div>
 </section>
@@ -985,7 +1067,7 @@
   </dialog>
 </lux-cmdk>
 
-<script src="static/lux.min.js?v=3"></script>
+<script src="static/lux.min.js?v=4"></script>
 <script>
   // Scroll reveal
   const revealObs = new IntersectionObserver((entries) => {

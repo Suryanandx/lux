@@ -1,0 +1,157 @@
+@layer lux.utilities {
+  /* ── Premium easings ────────────────────────────────────────────── */
+  :root {
+    --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-bounce:  cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-snappy:  cubic-bezier(0.2, 0, 0, 1);
+    --ease-elastic: cubic-bezier(0.5, 1.5, 0.5, 0.85);
+  }
+
+  /* ── Extended keyframes ─────────────────────────────────────────── */
+  @keyframes lux-shine {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes lux-shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes lux-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  @keyframes lux-wobble {
+    0%, 100% { transform: rotate(0); }
+    25%      { transform: rotate(-3deg); }
+    75%      { transform: rotate(3deg); }
+  }
+  @keyframes lux-flip-in {
+    0%   { opacity: 0; transform: perspective(400px) rotateX(90deg); }
+    100% { opacity: 1; transform: perspective(400px) rotateX(0); }
+  }
+  @keyframes lux-zoom-in {
+    0%   { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes lux-blur-in {
+    0%   { opacity: 0; filter: blur(8px); }
+    100% { opacity: 1; filter: blur(0); }
+  }
+  @keyframes lux-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+  @keyframes lux-typing {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+  @keyframes lux-caret {
+    50% { border-right-color: transparent; }
+  }
+  @keyframes lux-orbit {
+    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+  }
+  @keyframes lux-draw {
+    from { stroke-dashoffset: 100; }
+    to   { stroke-dashoffset: 0; }
+  }
+  @keyframes lux-rise {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ── Premium utility classes ────────────────────────────────────── */
+  .animate-float    { animation: lux-float 3s var(--ease-smooth) infinite; }
+  .animate-wobble   { animation: lux-wobble 0.6s var(--ease-bounce); }
+  .animate-flip-in  { animation: lux-flip-in 0.5s var(--ease-spring) both; }
+  .animate-zoom-in  { animation: lux-zoom-in 0.4s var(--ease-spring) both; }
+  .animate-blur-in  { animation: lux-blur-in 0.6s var(--ease-smooth) both; }
+  .animate-rise     { animation: lux-rise 0.7s var(--ease-spring) both; }
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: lux-gradient 8s ease infinite;
+  }
+  .animate-shimmer {
+    position: relative; overflow: hidden;
+  }
+  .animate-shimmer::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--text) 8%, transparent), transparent);
+    animation: lux-shimmer 2s infinite;
+  }
+
+  /* ── Hover effects ──────────────────────────────────────────────── */
+  .hover-lift { transition: transform var(--t), box-shadow var(--t); }
+  .hover-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+  .hover-scale { transition: transform var(--t); }
+  .hover-scale:hover { transform: scale(1.03); }
+
+  .hover-glow { transition: box-shadow var(--t); }
+  .hover-glow:hover { box-shadow: 0 0 32px -4px color-mix(in srgb, var(--brand) 50%, transparent); }
+
+  .hover-tilt { transition: transform var(--t); transform-style: preserve-3d; }
+  .hover-tilt:hover { transform: perspective(800px) rotateY(-4deg) rotateX(2deg); }
+
+  .hover-shine {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, transparent 20%, color-mix(in srgb, white 14%, transparent) 40%, transparent 60%) no-repeat -200% 0 / 200% 100%, var(--accent);
+    transition: background-position 0.8s var(--ease-smooth);
+  }
+  .hover-shine:hover { background-position: 200% 0, 0 0; }
+
+  /* ── Stagger children ───────────────────────────────────────────── */
+  .stagger > * { animation: lux-fade-up 0.6s var(--ease-spring) both; }
+  .stagger > *:nth-child(1) { animation-delay: 0ms;   }
+  .stagger > *:nth-child(2) { animation-delay: 80ms;  }
+  .stagger > *:nth-child(3) { animation-delay: 160ms; }
+  .stagger > *:nth-child(4) { animation-delay: 240ms; }
+  .stagger > *:nth-child(5) { animation-delay: 320ms; }
+  .stagger > *:nth-child(6) { animation-delay: 400ms; }
+  .stagger > *:nth-child(7) { animation-delay: 480ms; }
+  .stagger > *:nth-child(8) { animation-delay: 560ms; }
+
+  /* ── Gradient text ──────────────────────────────────────────────── */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--brand) 0%, color-mix(in srgb, var(--brand) 60%, #06b6d4) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-animated {
+    background: linear-gradient(120deg, var(--brand) 0%, #818cf8 30%, #06b6d4 60%, var(--brand) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: lux-gradient 6s linear infinite;
+  }
+
+  /* ── Spotlight cursor effect (set --x,--y via JS or pointer events) ── */
+  .spotlight {
+    position: relative; overflow: hidden;
+    background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), color-mix(in srgb, var(--brand) 14%, transparent), transparent 40%);
+  }
+
+  /* ── Border-gradient utility ────────────────────────────────────── */
+  .border-gradient {
+    background:
+      linear-gradient(var(--bg-subtle), var(--bg-subtle)) padding-box,
+      linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 60%, #06b6d4)) border-box;
+    border: 1px solid transparent;
+  }
+  .border-gradient-rainbow {
+    background:
+      linear-gradient(var(--bg), var(--bg)) padding-box,
+      conic-gradient(from var(--angle, 0deg), #6366f1, #ec4899, #f59e0b, #22c55e, #06b6d4, #6366f1) border-box;
+    border: 2px solid transparent;
+  }
+  @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+  @keyframes lux-spin-angle { to { --angle: 360deg; } }
+  .border-gradient-rainbow.animate { animation: lux-spin-angle 4s linear infinite; }
+
+  /* ── Glow ────────────────────────────────────────────────────────── */
+  .glow         { box-shadow: 0 0 32px -4px color-mix(in srgb, var(--brand) 40%, transparent); }
+  .glow-success { box-shadow: 0 0 32px -4px color-mix(in srgb, var(--success) 40%, transparent); }
+  .glow-danger  { box-shadow: 0 0 32px -4px color-mix(in srgb, var(--danger) 40%, transparent); }
+}

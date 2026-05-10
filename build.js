@@ -4,11 +4,13 @@ const path = require('path');
 const watch = process.argv.includes('--watch');
 
 const CSS_ORDER = [
-  '00-base', '01-theme',
+  '00-base', '01-theme', '02-density',
   'button', 'form', 'card', 'badge', 'alert',
   'table', 'dialog', 'accordion', 'tabs',
   'progress', 'toast', 'dropdown',
-  'avatar', 'tooltip', 'nav', 'cmdk', 'components-extra', 'animations', 'utilities',
+  'avatar', 'tooltip', 'nav', 'cmdk',
+  'components-extra', 'components-pro',
+  'animations', 'animations-pro', 'utilities',
 ];
 
 async function buildCSS() {
