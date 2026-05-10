@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Showcase — Lux UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/lux.min.css?v=3" />
+  <style>
+    body { font-family: var(--font-sans); }
+    .page { max-width: 1280px; margin: 0 auto; padding: var(--s-10) var(--s-8); }
+    .page-title { font-size: var(--text-3xl); font-weight: 800; letter-spacing: -0.03em; margin-bottom: var(--s-2); }
+    .page-sub { color: var(--text-muted); margin-bottom: var(--s-10); max-width: 560px; }
+    .showcase {
+      margin-bottom: var(--s-12); border: 1px solid var(--border); border-radius: var(--r-xl);
+      overflow: hidden; background: var(--bg);
+      box-shadow: 0 12px 32px -8px color-mix(in srgb, var(--brand) 10%, rgba(0,0,0,0.2));
+    }
+    .sc-tabs {
+      display: flex; gap: 4px; padding: var(--s-3) var(--s-4);
+      background: var(--bg-subtle); border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+    .win-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .sc-title { font-size: var(--text-xs); color: var(--text-subtle); font-family: var(--font-mono); margin-left: var(--s-3); }
+
+    .dash { display: grid; grid-template-columns: 200px 1fr; min-height: 540px; }
+    .dnav { background: var(--bg-subtle); border-right: 1px solid var(--border); padding: var(--s-4) var(--s-3); }
+    .dnav-brand { display: flex; align-items: center; gap: var(--s-2); font-weight: 700; padding: var(--s-2) var(--s-3); margin-bottom: var(--s-4); }
+    .dnav-section { font-size: 9px; font-weight: 700; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.1em; padding: var(--s-3) var(--s-3) var(--s-1); }
+    .dnav a { display: flex; align-items: center; gap: var(--s-2); padding: 6px var(--s-3); font-size: var(--text-xs); color: var(--text-muted); text-decoration: none; border-radius: var(--r-sm); margin-bottom: 2px; }
+    .dnav a.active { background: var(--brand-muted); color: var(--brand); font-weight: 600; }
+    .dnav a svg { width: 12px; height: 12px; }
+    .dmain { padding: var(--s-5); overflow: hidden; }
+    .dh { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--s-5); }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); }
+    .grid2 { display: grid; grid-template-columns: 2fr 1fr; gap: var(--s-3); }
+    @media (max-width: 720px) { .dash { grid-template-columns: 1fr; } .dnav { display: none; } .grid3 { grid-template-columns: 1fr 1fr; } .grid2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="../index.html"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="5" fill="#6366f1"/><path d="M5 13h10M5 10l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Lux</a>
+  <div class="nav-links">
+    <a href="../components/index.html">Components</a>
+    <a href="../usage/index.html">Usage</a>
+    <a href="../examples/index.html">Examples</a>
+    <a href="index.html" aria-current="page">Showcase</a>
+    <a href="../compare/index.html">Compare</a>
+  </div>
+</nav>
+
+<div class="page">
+  <h1 class="page-title">Showcase</h1>
+  <p class="page-sub">Full dashboard mockups built entirely with Lux. Pure HTML + the 12KB Lux bundle. No frameworks.</p>
+
+  <!-- ── 1. Analytics dashboard ── -->
+  <section class="showcase">
+    <div class="sc-tabs">
+      <div class="win-dot" style="background:#ef4444"></div>
+      <div class="win-dot" style="background:#f59e0b"></div>
+      <div class="win-dot" style="background:#22c55e"></div>
+      <span class="sc-title">analytics.acme.com</span>
+      <span class="badge sm" data-variant="success" style="margin-left:auto">Live</span>
+    </div>
+    <div class="dash">
+      <aside class="dnav">
+        <div class="dnav-brand"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="5" fill="#6366f1"/></svg>Acme</div>
+        <div class="dnav-section">Workspace</div>
+        <a href="#" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Analytics</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Audience</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Events</a>
+        <div class="dnav-section">Settings</div>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Account</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/></svg>Billing</a>
+      </aside>
+      <div class="dmain">
+        <div class="dh">
+          <div><h3 style="margin:0">Analytics</h3><ol class="breadcrumb"><li><a href="#">Home</a></li><li><span aria-current="page">Analytics</span></li></ol></div>
+          <div style="display:flex;gap:var(--s-2)">
+            <div class="segmented"><button>24h</button><button aria-pressed="true">7d</button><button>30d</button></div>
+            <button class="sm" data-variant="brand">Share</button>
+          </div>
+        </div>
+        <div class="grid3" style="margin-bottom:var(--s-3)">
+          <div class="stat-card" style="padding:var(--s-3)"><div class="stat-label">Visitors</div><div class="stat-value">48.2k</div><div class="sparkline" style="margin-top:6px"><span style="height:30%"></span><span style="height:50%"></span><span style="height:40%"></span><span style="height:70%"></span><span style="height:60%"></span><span style="height:80%"></span><span style="height:100%"></span></div></div>
+          <div class="stat-card" style="padding:var(--s-3)"><div class="stat-label">Pageviews</div><div class="stat-value">214k</div><div class="sparkline" style="margin-top:6px"><span style="height:50%"></span><span style="height:60%"></span><span style="height:55%"></span><span style="height:75%"></span><span style="height:80%"></span><span style="height:90%"></span><span style="height:85%"></span></div></div>
+          <div class="stat-card" style="padding:var(--s-3)"><div class="stat-label">Avg session</div><div class="stat-value">3m 12s</div><div class="sparkline" style="margin-top:6px"><span style="height:60%"></span><span style="height:65%"></span><span style="height:70%"></span><span style="height:68%"></span><span style="height:72%"></span><span style="height:75%"></span><span style="height:80%"></span></div></div>
+        </div>
+        <div class="grid2">
+          <div class="card" style="padding:var(--s-3)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:var(--s-3)"><strong style="font-size:var(--text-sm)">Top pages</strong><a href="#" style="font-size:var(--text-xs)">View all →</a></div>
+            <table style="font-size:var(--text-xs)"><tbody>
+              <tr><td>/dashboard</td><td style="text-align:right;color:var(--text-muted)">12,841</td></tr>
+              <tr><td>/login</td><td style="text-align:right;color:var(--text-muted)">9,210</td></tr>
+              <tr><td>/pricing</td><td style="text-align:right;color:var(--text-muted)">4,028</td></tr>
+              <tr><td>/blog</td><td style="text-align:right;color:var(--text-muted)">2,194</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card" style="padding:var(--s-3)">
+            <strong style="font-size:var(--text-sm);display:block;margin-bottom:var(--s-3)">Live now</strong>
+            <div style="font-size:var(--text-2xl);font-weight:800;display:flex;align-items:center;gap:var(--s-2)"><span class="status-dot" data-variant="success"></span>247</div>
+            <div style="font-size:var(--text-xs);color:var(--text-subtle);margin-top:4px">visitors right now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. AI Studio ── -->
+  <section class="showcase">
+    <div class="sc-tabs">
+      <div class="win-dot" style="background:#ef4444"></div>
+      <div class="win-dot" style="background:#f59e0b"></div>
+      <div class="win-dot" style="background:#22c55e"></div>
+      <span class="sc-title">studio.aurora.ai/playground</span>
+    </div>
+    <div class="dash">
+      <aside class="dnav">
+        <div class="dnav-brand">Aurora</div>
+        <div class="dnav-section">AI</div>
+        <a href="#" class="active">Playground</a>
+        <a href="#">Models</a>
+        <a href="#">Prompts</a>
+        <a href="#">Datasets</a>
+        <div class="dnav-section">Logs</div>
+        <a href="#">Requests</a>
+        <a href="#">Errors</a>
+      </aside>
+      <div class="dmain" style="display:flex;flex-direction:column;gap:var(--s-3)">
+        <div class="dh">
+          <div><h3 style="margin:0">Playground</h3></div>
+          <div style="display:flex;gap:var(--s-2)"><button class="sm" data-variant="outline">Save preset</button><button class="sm" data-variant="brand">Run</button></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 240px;gap:var(--s-3);flex:1">
+          <div style="display:flex;flex-direction:column;gap:var(--s-3)">
+            <div class="card" style="padding:0">
+              <div style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:var(--text-xs);color:var(--text-subtle);font-weight:600">SYSTEM</div>
+              <textarea style="width:100%;border:none;background:transparent;padding:var(--s-3);font-family:var(--font-mono);font-size:var(--text-xs);min-height:60px;outline:none">You are a helpful coding assistant.</textarea>
+            </div>
+            <div class="card" style="padding:0;flex:1">
+              <div style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:var(--text-xs);color:var(--text-subtle);font-weight:600">USER</div>
+              <textarea style="width:100%;border:none;background:transparent;padding:var(--s-3);font-family:var(--font-mono);font-size:var(--text-xs);min-height:100px;outline:none">Write a Python function to validate an email address.</textarea>
+            </div>
+          </div>
+          <div class="card" style="padding:var(--s-3);display:flex;flex-direction:column;gap:var(--s-3)">
+            <div class="field"><label style="font-size:var(--text-xs)">Model</label><select><option>claude-sonnet-4-6</option><option>gpt-4o</option></select></div>
+            <div class="field"><label style="font-size:var(--text-xs);display:flex;justify-content:space-between">Temperature<span style="color:var(--brand);font-weight:600">0.7</span></label><input type="range" min="0" max="2" step="0.1" value="0.7" /></div>
+            <div class="field"><label style="font-size:var(--text-xs)">Max tokens</label>
+              <div class="number-input"><button data-step="-256">−</button><input type="number" value="2048" min="1" max="8192" /><button data-step="256">+</button></div>
+            </div>
+            <label class="checkbox-label" style="font-size:var(--text-xs)"><input type="checkbox" role="switch" checked /> Stream response</label>
+            <label class="checkbox-label" style="font-size:var(--text-xs)"><input type="checkbox" role="switch" /> JSON mode</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. Team / Workspace ── -->
+  <section class="showcase">
+    <div class="sc-tabs">
+      <div class="win-dot" style="background:#ef4444"></div>
+      <div class="win-dot" style="background:#f59e0b"></div>
+      <div class="win-dot" style="background:#22c55e"></div>
+      <span class="sc-title">app.flux.io/team</span>
+    </div>
+    <div class="dash">
+      <aside class="dnav">
+        <div class="dnav-brand">Flux</div>
+        <div class="dnav-section">Workspace</div>
+        <a href="#">Overview</a>
+        <a href="#">Projects</a>
+        <a href="#" class="active">Team</a>
+        <a href="#">Permissions</a>
+      </aside>
+      <div class="dmain">
+        <div class="dh">
+          <div><h3 style="margin:0">Team members</h3><p style="font-size:var(--text-sm);color:var(--text-muted);margin:0">12 members · 3 admins</p></div>
+          <button class="sm" data-variant="brand">+ Invite member</button>
+        </div>
+        <div style="display:flex;gap:var(--s-3);margin-bottom:var(--s-3)">
+          <div class="input-wrap" style="flex:1"><svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input class="sm" type="search" placeholder="Search members…" style="width:100%" /></div>
+          <select class="sm" style="width:140px"><option>All roles</option><option>Admin</option><option>Member</option></select>
+        </div>
+        <div class="card" style="padding:0">
+          <div class="table-wrap" style="border:none;border-radius:0">
+            <table>
+              <thead><tr><th data-sort>Member</th><th>Role</th><th>Last active</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="avatar sm" style="background:linear-gradient(135deg,#6366f1,#06b6d4)">SR</div><div><div style="font-weight:600">Suryanand</div><div style="font-size:var(--text-xs);color:var(--text-subtle)">hi@suryanand.com</div></div></div></td><td><span class="badge" data-variant="brand">Admin</span></td><td>2 min ago</td><td><span class="badge dot sm" data-variant="success">Active</span></td><td></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="avatar sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">MK</div><div><div style="font-weight:600">Mira K.</div><div style="font-size:var(--text-xs);color:var(--text-subtle)">mira@flux.io</div></div></div></td><td><span class="badge">Member</span></td><td>1 hour ago</td><td><span class="badge dot sm" data-variant="success">Active</span></td><td></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="avatar sm" style="background:linear-gradient(135deg,#10b981,#3b82f6)">AL</div><div><div style="font-weight:600">Alex L.</div><div style="font-size:var(--text-xs);color:var(--text-subtle)">alex@flux.io</div></div></div></td><td><span class="badge">Member</span></td><td>Yesterday</td><td><span class="badge dot sm" data-variant="warning">Idle</span></td><td></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="avatar sm" style="background:var(--bg-muted);color:var(--text-subtle)">?</div><div><div style="font-weight:600;color:var(--text-muted)">Pending invite</div><div style="font-size:var(--text-xs);color:var(--text-subtle)">jamie@external.com</div></div></div></td><td><span class="badge">Member</span></td><td>—</td><td><span class="badge dot sm" data-variant="warning">Pending</span></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. Logs / Observability ── -->
+  <section class="showcase">
+    <div class="sc-tabs">
+      <div class="win-dot" style="background:#ef4444"></div>
+      <div class="win-dot" style="background:#f59e0b"></div>
+      <div class="win-dot" style="background:#22c55e"></div>
+      <span class="sc-title">app.tempo.dev/logs</span>
+    </div>
+    <div class="dash">
+      <aside class="dnav">
+        <div class="dnav-brand">Tempo</div>
+        <div class="dnav-section">Observe</div>
+        <a href="#">Overview</a>
+        <a href="#" class="active">Logs</a>
+        <a href="#">Traces</a>
+        <a href="#">Alerts</a>
+      </aside>
+      <div class="dmain">
+        <div class="dh">
+          <div><h3 style="margin:0">Live logs</h3></div>
+          <div style="display:flex;gap:var(--s-2);align-items:center"><span class="status-dot" data-variant="success"></span><span style="font-size:var(--text-xs);color:var(--text-subtle)">streaming</span><button class="sm" data-variant="outline">⏸ Pause</button></div>
+        </div>
+        <div style="display:flex;gap:var(--s-2);margin-bottom:var(--s-3)">
+          <input type="search" placeholder="level:error service:api" class="sm" style="flex:1;font-family:var(--font-mono)" />
+          <div class="segmented sm"><button>All</button><button aria-pressed="true">Errors</button><button>Warnings</button></div>
+        </div>
+        <div style="background:#0d0d0f;border:1px solid #1a1a1d;border-radius:var(--r-lg);padding:var(--s-3);font-family:var(--font-mono);font-size:11px;color:#d4d4d8;max-height:280px;overflow-y:auto;line-height:1.7">
+          <div><span style="color:#71717a">12:48:23.114</span> <span style="color:#f87171;font-weight:700">ERROR</span> <span style="color:#fde68a">[api]</span> Database connection timeout after 3000ms</div>
+          <div><span style="color:#71717a">12:48:22.891</span> <span style="color:#fbbf24;font-weight:700">WARN</span>  <span style="color:#fde68a">[worker]</span> Retrying job <span style="color:#a5b4fc">queue:emails:#4218</span> (attempt 3/5)</div>
+          <div><span style="color:#71717a">12:48:22.452</span> <span style="color:#86efac;font-weight:700">INFO</span>  <span style="color:#fde68a">[api]</span> Request <span style="color:#7dd3fc">POST /v1/messages</span> 200 in 482ms</div>
+          <div><span style="color:#71717a">12:48:21.998</span> <span style="color:#86efac;font-weight:700">INFO</span>  <span style="color:#fde68a">[auth]</span> User <span style="color:#c084fc">user_8492</span> signed in via google</div>
+          <div><span style="color:#71717a">12:48:21.612</span> <span style="color:#86efac;font-weight:700">INFO</span>  <span style="color:#fde68a">[api]</span> Request <span style="color:#7dd3fc">GET /v1/health</span> 200 in 14ms</div>
+          <div><span style="color:#71717a">12:48:20.041</span> <span style="color:#f87171;font-weight:700">ERROR</span> <span style="color:#fde68a">[stripe]</span> Webhook signature verification failed</div>
+          <div><span style="color:#71717a">12:48:19.871</span> <span style="color:#86efac;font-weight:700">INFO</span>  <span style="color:#fde68a">[api]</span> Request <span style="color:#7dd3fc">GET /v1/users/me</span> 200 in 28ms</div>
+          <div><span style="color:#71717a">12:48:19.244</span> <span style="color:#fbbf24;font-weight:700">WARN</span>  <span style="color:#fde68a">[cache]</span> Redis pool at 85% capacity</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align:center;padding:var(--s-10) 0">
+    <p style="color:var(--text-subtle);font-size:var(--text-sm)">Built entirely with Lux UI components · 12KB gzipped · Zero dependencies</p>
+    <div style="display:flex;gap:var(--s-3);justify-content:center;margin-top:var(--s-4)"><a href="../components/index.html" class="btn" data-variant="brand">Browse components</a><a href="../examples/index.html" class="btn" data-variant="outline">More examples →</a></div>
+  </div>
+</div>
+
+<script src="../static/lux.min.js?v=3"></script>
+</body></html>

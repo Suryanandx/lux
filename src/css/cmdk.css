@@ -1,0 +1,98 @@
+@layer lux.components {
+  /* ── Theme toggle ── */
+  .theme-toggle {
+    display: inline-flex; padding: 3px; background: var(--bg-muted);
+    border: 1px solid var(--border); border-radius: var(--r-full); gap: 2px;
+  }
+  .theme-toggle button {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; padding: 0; border: none; background: transparent;
+    color: var(--text-subtle); border-radius: var(--r-full);
+    cursor: pointer; transition: color var(--t-fast), background var(--t-fast);
+  }
+  .theme-toggle button:hover { color: var(--text); }
+  .theme-toggle button[aria-pressed="true"] {
+    background: var(--bg); color: var(--text);
+    box-shadow: var(--shadow-sm);
+  }
+  .theme-toggle button svg { width: 14px; height: 14px; }
+
+  /* ── Brand color picker ── */
+  .brand-picker { display: inline-flex; gap: var(--s-2); align-items: center; flex-wrap: wrap; }
+  .brand-swatch {
+    width: 24px; height: 24px; border-radius: var(--r-full); cursor: pointer;
+    border: 2px solid transparent; padding: 0; background: var(--swatch);
+    transition: transform var(--t-fast), border-color var(--t-fast);
+    position: relative;
+  }
+  .brand-swatch:hover { transform: scale(1.1); }
+  .brand-swatch[aria-pressed="true"] {
+    border-color: var(--bg);
+    box-shadow: 0 0 0 2px var(--swatch);
+  }
+
+  /* ── Command palette (cmdk) ── */
+  lux-cmdk dialog {
+    width: min(560px, calc(100vw - var(--s-8)));
+    max-height: 80vh;
+    padding: 0; border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    background: var(--bg);
+    box-shadow: 0 24px 64px -12px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
+    overflow: hidden;
+  }
+  lux-cmdk dialog::backdrop {
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(4px);
+  }
+  .cmdk-search {
+    display: flex; align-items: center; gap: var(--s-3);
+    padding: var(--s-4) var(--s-5);
+    border-bottom: 1px solid var(--border);
+  }
+  .cmdk-search svg { width: 16px; height: 16px; color: var(--text-subtle); flex-shrink: 0; }
+  .cmdk-search input {
+    flex: 1; border: none; background: transparent; outline: none;
+    font-size: var(--text-base); color: var(--text);
+    font-family: inherit; padding: 0;
+  }
+  .cmdk-search input::placeholder { color: var(--text-subtle); }
+  .cmdk-kbd {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--text-subtle); background: var(--bg-muted);
+    border: 1px solid var(--border); border-bottom-width: 2px;
+    padding: 1px 6px; border-radius: var(--r-sm);
+  }
+  .cmdk-list {
+    max-height: 380px; overflow-y: auto; padding: var(--s-2);
+    list-style: none;
+  }
+  .cmdk-group-label {
+    font-size: 10px; font-weight: 700; color: var(--text-subtle);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: var(--s-3) var(--s-3) var(--s-2);
+  }
+  .cmdk-option {
+    display: flex; align-items: center; gap: var(--s-3);
+    padding: var(--s-2) var(--s-3); border-radius: var(--r);
+    cursor: pointer; font-size: var(--text-sm); color: var(--text);
+    user-select: none;
+  }
+  .cmdk-option[aria-selected="true"] {
+    background: var(--bg-muted);
+  }
+  .cmdk-option svg { width: 14px; height: 14px; color: var(--text-subtle); flex-shrink: 0; }
+  .cmdk-option[aria-selected="true"] svg { color: var(--brand); }
+  .cmdk-option .cmdk-meta { margin-left: auto; font-size: var(--text-xs); color: var(--text-subtle); }
+  .cmdk-empty {
+    padding: var(--s-8) var(--s-5); text-align: center;
+    font-size: var(--text-sm); color: var(--text-subtle);
+  }
+  .cmdk-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: var(--s-3) var(--s-5); border-top: 1px solid var(--border);
+    background: var(--bg-subtle); font-size: var(--text-xs); color: var(--text-subtle);
+  }
+  .cmdk-footer .cmdk-kbd { font-size: 10px; }
+  .cmdk-hint { display: flex; align-items: center; gap: var(--s-2); }
+}

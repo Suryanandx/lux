@@ -1,7 +1,13 @@
 {
   "name": "@suryanandx/lux",
-  "version": "0.1.0",
-  "description": "Zero-weight UI kit for modern SaaS. ~8KB. No dependencies.",
+  "version": "0.2.0",
+  "description": "Zero-weight UI kit for modern SaaS. 12KB total (CSS + JS gzipped). 40+ components, native dark mode, zero dependencies. Built to beat shadcn on size, not features.",
+  "keywords": [
+    "ui", "ui-kit", "ui-library", "css", "saas", "component-library",
+    "design-system", "dark-mode", "web-components", "lightweight",
+    "zero-dependencies", "tailwind-alternative", "bootstrap-alternative",
+    "shadcn-alternative", "semantic-css", "vanilla", "no-framework"
+  ],
   "author": "Suryanand <systems@valnoraelric.com> (https://suryanand.com)",
   "license": "MIT",
   "homepage": "https://lux.valthrax.com",

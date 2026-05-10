@@ -1,8 +1,17 @@
+import './theme.js';
 import './tabs.js';
 import './dropdown.js';
+import './cmdk.js';
+import './counter.js';
+import './sort-table.js';
+import './copy.js';
+import './number-input.js';
+import './tag-input.js';
+import './file-drop.js';
+import './banner.js';
 import { toast } from './toast.js';
+import { theme } from './theme.js';
 
-// Dialog helpers
 document.addEventListener('click', e => {
   const trigger = e.target.closest('[data-dialog]');
   if (trigger) {
@@ -10,24 +19,17 @@ document.addEventListener('click', e => {
     dialog?.showModal();
   }
   const close = e.target.closest('[data-dialog-close]');
-  if (close) {
-    close.closest('dialog')?.close();
-  }
-  // Close dialog on backdrop click
+  if (close) close.closest('dialog')?.close();
   if (e.target.tagName === 'DIALOG') {
-    const rect = e.target.getBoundingClientRect();
-    const inDialog = rect.top <= e.clientY && e.clientY <= rect.bottom &&
-                     rect.left <= e.clientX && e.clientX <= rect.right;
-    if (!inDialog) e.target.close();
+    const r = e.target.getBoundingClientRect();
+    if (e.clientY < r.top || e.clientY > r.bottom || e.clientX < r.left || e.clientX > r.right) {
+      e.target.close();
+    }
   }
 });
 
-// Escape closes dialogs (native handles it, but make sure)
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    const open = document.querySelector('dialog[open]');
-    open?.close();
-  }
+  if (e.key === 'Escape') document.querySelector('dialog[open]:not([data-cmdk])')?.close();
 });
 
-window.lux = { toast };
+window.lux = { toast, theme };

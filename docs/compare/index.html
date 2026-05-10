@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare — Lux UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/lux.min.css?v=3" />
+  <style>
+    body { font-family: var(--font-sans); }
+    .page { max-width: 960px; margin: 0 auto; padding: var(--s-10) var(--s-8); }
+    h1 { font-size: var(--text-3xl); font-weight: 800; letter-spacing: -0.03em; margin-bottom: var(--s-2); }
+    h2 { font-size: var(--text-xl); font-weight: 700; margin: var(--s-10) 0 var(--s-3); }
+    p.lead { color: var(--text-muted); margin-bottom: var(--s-8); max-width: 560px; }
+    .cmp { width: 100%; border-collapse: collapse; margin: var(--s-4) 0; font-size: var(--text-sm); }
+    .cmp th, .cmp td { padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    .cmp th { background: var(--bg-subtle); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-subtle); }
+    .cmp .lux { background: var(--brand-muted); font-weight: 600; }
+    .check { color: var(--success); font-weight: 700; }
+    .cross { color: var(--danger); font-weight: 700; }
+    .meh   { color: var(--warning); font-weight: 600; }
+    .bar { height: 8px; background: var(--bg-muted); border-radius: 99px; overflow: hidden; min-width: 100px; }
+    .bar > span { display: block; height: 100%; border-radius: 99px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="../index.html"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="5" fill="#6366f1"/><path d="M5 13h10M5 10l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Lux</a>
+  <div class="nav-links">
+    <a href="../components/index.html">Components</a>
+    <a href="../usage/index.html">Usage</a>
+    <a href="../examples/index.html">Examples</a>
+    <a href="../showcase/index.html">Showcase</a>
+    <a href="index.html" aria-current="page">Compare</a>
+  </div>
+</nav>
+
+<div class="page">
+  <h1>Lux vs the rest</h1>
+  <p class="lead">An honest comparison. Lux isn't trying to do everything — it does the SaaS UI essentials in a fraction of the size.</p>
+
+  <h2>Bundle size</h2>
+  <table class="cmp">
+    <thead><tr><th>Library</th><th style="width:200px">Gzipped</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr class="lux"><td><strong>Lux</strong></td><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="bar"><span style="width:4%;background:var(--brand)"></span></div>12KB</div></td><td>Complete CSS + JS for 40+ components</td></tr>
+      <tr><td>Bootstrap 5</td><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="bar"><span style="width:25%;background:linear-gradient(90deg,var(--warning),var(--danger))"></span></div>~30KB</div></td><td>CSS + JS, needs Popper.js</td></tr>
+      <tr><td>HeroUI</td><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="bar"><span style="width:70%;background:linear-gradient(90deg,var(--warning),var(--danger))"></span></div>~85KB</div></td><td>React + Tailwind required</td></tr>
+      <tr><td>shadcn/ui</td><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="bar"><span style="width:100%;background:linear-gradient(90deg,var(--warning),var(--danger))"></span></div>200KB+</div></td><td>Per-component install, adds up fast</td></tr>
+      <tr><td>MUI</td><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="bar"><span style="width:75%;background:linear-gradient(90deg,var(--warning),var(--danger))"></span></div>~90KB</div></td><td>Emotion + 30+ deps</td></tr>
+      <tr><td>Chakra UI</td><td><div style="display:flex;align-items:center;gap:var(--s-2)"><div class="bar"><span style="width:55%;background:linear-gradient(90deg,var(--warning),var(--danger))"></span></div>~65KB</div></td><td>Emotion + framer-motion</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Feature matrix</h2>
+  <table class="cmp">
+    <thead><tr><th>Feature</th><th>Lux</th><th>shadcn</th><th>HeroUI</th><th>MUI</th><th>Bootstrap</th></tr></thead>
+    <tbody>
+      <tr><td>Zero dependencies</td><td class="lux"><span class="check">✓</span></td><td><span class="meh">CLI</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="meh">Popper</span></td></tr>
+      <tr><td>No build step</td><td class="lux"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Framework-free</td><td class="lux"><span class="check">✓</span></td><td><span class="cross">React</span></td><td><span class="cross">React</span></td><td><span class="cross">React</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Native dark mode</td><td class="lux"><span class="check">light-dark()</span></td><td><span class="meh">class</span></td><td><span class="meh">class</span></td><td><span class="meh">theme</span></td><td><span class="meh">attr</span></td></tr>
+      <tr><td>Semantic HTML</td><td class="lux"><span class="check">✓</span></td><td><span class="cross">div</span></td><td><span class="cross">div</span></td><td><span class="cross">div</span></td><td><span class="meh">partial</span></td></tr>
+      <tr><td>CDN-ready</td><td class="lux"><span class="check">2 lines</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Accessibility</td><td class="lux"><span class="check">AAA</span></td><td><span class="check">AAA</span></td><td><span class="check">AA+</span></td><td><span class="check">AA</span></td><td><span class="meh">AA</span></td></tr>
+      <tr><td>Component theming</td><td class="lux"><span class="check">CSS vars</span></td><td><span class="check">CSS vars</span></td><td><span class="check">Theme</span></td><td><span class="check">Theme</span></td><td><span class="meh">Sass</span></td></tr>
+      <tr><td>Command palette</td><td class="lux"><span class="check">✓</span></td><td><span class="meh">cmdk pkg</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+      <tr><td>SSR support</td><td class="lux"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="meh">complex</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Tree-shakable</td><td class="lux"><span class="check">Per-file</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="meh">module</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>When to pick Lux</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4);margin:var(--s-4) 0">
+    <div class="feature-card">
+      <h3 style="margin-bottom:var(--s-2)">✓ Pick Lux if</h3>
+      <ul style="font-size:var(--text-sm);color:var(--text-muted);padding-left:var(--s-5)">
+        <li>Bundle size is a real constraint</li>
+        <li>You're building a marketing site, landing page, or admin panel</li>
+        <li>You want one consistent design across multi-stack projects</li>
+        <li>You're sick of fighting Tailwind's class soup</li>
+        <li>You want native HTML elements that just look good</li>
+        <li>You need to ship the same UI to React, Vue, Astro, plain HTML</li>
+      </ul>
+    </div>
+    <div class="feature-card">
+      <h3 style="margin-bottom:var(--s-2)">✗ Pick something else if</h3>
+      <ul style="font-size:var(--text-sm);color:var(--text-muted);padding-left:var(--s-5)">
+        <li>You need 100+ pre-built React components today</li>
+        <li>Your team is committed to a specific framework's ecosystem</li>
+        <li>You need date pickers and complex grids out of the box (use AG Grid, etc.)</li>
+        <li>You want to deeply customize every render — copy-paste from shadcn instead</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Migration guides</h2>
+  <p style="color:var(--text-muted);margin-bottom:var(--s-4)">Coming from another library? Here's the rough mental model:</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s-3)">
+    <div class="card" style="padding:var(--s-4)">
+      <strong style="display:block;margin-bottom:var(--s-2)">From shadcn/ui</strong>
+      <p style="font-size:var(--text-xs);color:var(--text-muted);line-height:1.6">Replace JSX wrappers with raw HTML + <code>data-variant</code>. Drop your <code>components/ui/*</code> folder. ~80% size reduction.</p>
+    </div>
+    <div class="card" style="padding:var(--s-4)">
+      <strong style="display:block;margin-bottom:var(--s-2)">From Tailwind UI</strong>
+      <p style="font-size:var(--text-xs);color:var(--text-muted);line-height:1.6">Replace 15-class strings with semantic class names or pure HTML. Keep Tailwind for layout if you want — Lux doesn't conflict.</p>
+    </div>
+    <div class="card" style="padding:var(--s-4)">
+      <strong style="display:block;margin-bottom:var(--s-2)">From Bootstrap</strong>
+      <p style="font-size:var(--text-xs);color:var(--text-muted);line-height:1.6">Class names are different but the mental model is similar. Lux is half the size with native dark mode and modern aesthetics.</p>
+    </div>
+  </div>
+</div>
+<script src="../static/lux.min.js?v=3"></script>
+</body></html>

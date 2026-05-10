@@ -5,6 +5,10 @@
     { "src": "/usage",      "dest": "/usage/index.html" },
     { "src": "/customizing","dest": "/customizing/index.html" },
     { "src": "/recipes",    "dest": "/recipes/index.html" },
+    { "src": "/examples",   "dest": "/examples/index.html" },
+    { "src": "/showcase",   "dest": "/showcase/index.html" },
+    { "src": "/compare",    "dest": "/compare/index.html" },
+    { "src": "/theming",    "dest": "/theming/index.html" },
     { "src": "/static/(.*)", "dest": "/static/$1" },
     { "src": "/(.*)",       "dest": "/index.html" }
   ]
